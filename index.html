@@ -1,11 +1,491 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Itamar Assaf – Home</title>
+  <meta charset="UTF-8" />
+  <title>Itamar Assaf – Electrical Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Itamar Assaf – Electrical Engineer specializing in deep learning, firmware and silicon validation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-light: #0b1220;
+      --card-bg: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.14);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.3);
+      --radius-lg: 18px;
+      --shadow-soft: 0 20px 60px rgba(15, 23, 42, 0.9);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 52%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 32px 16px 48px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 980px;
+    }
+
+    .hero {
+      display: flex;
+      gap: 28px;
+      padding: 28px 28px 24px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(15,23,42,0.96), rgba(15,23,42,0.96))
+                  padding-box,
+                  linear-gradient(135deg, rgba(56,189,248,0.9), rgba(129,140,248,0.9)) border-box;
+      border: 1px solid transparent;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-left {
+      flex: 0 0 140px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 3px solid rgba(148, 163, 184, 0.6);
+      box-shadow: 0 14px 40px rgba(15,23,42,0.9);
+      background: #020617;
+    }
+
+    .hero-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 3vw, 2.35rem);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .subtitle {
+      font-size: 0.98rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .subtitle strong {
+      font-weight: 500;
+      color: #e2e8f0;
+    }
+
+    .hero-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      margin-top: 4px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .hero-contact a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .hero-contact a:hover {
+      text-decoration: underline;
+    }
+
+    .hero-tags {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.8rem;
+    }
+
+    .tag-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.4);
+      color: #e5e7eb;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    main {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.2fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: var(--radius-lg);
+      padding: 20px 20px 18px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(18px);
+    }
+
+    .card + .card {
+      margin-top: 14px;
+    }
+
+    h2 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .section-intro {
+      font-size: 0.92rem;
+      color: var(--text-main);
+    }
+
+    .section-intro + .muted {
+      margin-top: 6px;
+    }
+
+    .muted {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .item {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(51, 65, 85, 0.8);
+    }
+
+    .item:first-of-type {
+      border-top: none;
+      padding-top: 6px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    .item-title {
+      font-size: 0.98rem;
+      font-weight: 500;
+    }
+
+    .item-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .item-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .badge {
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      color: var(--text-muted);
+    }
+
+    .item ul {
+      margin-top: 8px;
+      padding-left: 18px;
+      list-style: disc;
+      font-size: 0.9rem;
+    }
+
+    .item ul li + li {
+      margin-top: 4px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px 14px;
+      margin-top: 12px;
+      font-size: 0.88rem;
+    }
+
+    .skill-group-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .skill-list {
+      color: var(--text-main);
+    }
+
+    .timeline-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px var(--accent-soft);
+      margin-top: 4px;
+    }
+
+    .lang-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.88rem;
+      margin-top: 8px;
+    }
+
+    footer {
+      margin-top: 24px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 780px) {
+      body {
+        padding: 20px 12px 32px;
+      }
+
+      .hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 22px 18px 20px;
+      }
+
+      .hero-right {
+        align-items: center;
+      }
+
+      .hero-contact {
+        justify-content: center;
+      }
+
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .avatar {
+        width: 120px;
+        height: 120px;
+      }
+
+      .hero {
+        padding: 18px 14px 18px;
+      }
+
+      .card {
+        padding: 16px 14px 14px;
+      }
+
+      .item-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, I’m Itamar</h1>
-  <p>Welcome to my personal GitHub Page.</p>
+<div class="page">
+  <header class="hero">
+    <div class="hero-left">
+      <!-- Replace images/itamar.jpg with your actual file name if different -->
+      <img src="images/profile picture - Itamar Assaf.jpg" alt="Photo of Itamar Assaf" class="avatar">
+    </div>
+    <div class="hero-right">
+      <h1>Itamar Assaf</h1>
+      <p class="subtitle">
+        <strong>Electrical Engineer</strong> &nbsp;·&nbsp; Deep Learning, Firmware &amp; Silicon Validation
+      </p>
+      <div class="hero-contact">
+        <a href="mailto:itamar.assaf@gmail.com">itamar.assaf@gmail.com</a>
+        <span>·</span>
+        <a href="tel:+972508464785">+972&nbsp;50&nbsp;846&nbsp;4785</a>
+        <span>·</span>
+        <span>Tel Aviv, Israel</span>
+      </div>
+      <div class="hero-tags">
+        <span class="tag-pill">Python · C · C++</span>
+        <span class="tag-pill">Deep Learning</span>
+        <span class="tag-pill">Zephyr RTOS</span>
+        <span class="tag-pill">AI Hardware</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- LEFT COLUMN -->
+    <section>
+      <article class="card">
+        <h2>Profile</h2>
+        <p class="section-intro">
+          Electrical engineer with experience in firmware and silicon validation for AI accelerators at Intel’s Habana Labs.
+          Strong background in deep learning and neural network architectures, with hands-on work across embedded systems,
+          performance benchmarking and optimization of machine learning workloads.
+        </p>
+        <p class="muted">
+          Currently pursuing an M.Sc. in Electrical Engineering at Tel Aviv University, focusing on deep learning and machine learning research.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Work Experience</h2>
+
+        <div class="item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">Silicon Validation Engineer, FW</div>
+              <div class="item-meta">Habana Labs (Intel) · AI Accelerators</div>
+              <div class="item-badges">
+                <span class="badge">2022 – Present</span>
+                <span class="badge">Tel Aviv, Israel</span>
+              </div>
+            </div>
+            <div class="timeline-dot" aria-hidden="true"></div>
+          </div>
+          <ul>
+            <li>
+              Validate hardware and firmware of AI accelerators, ensuring alignment with architecture and performance requirements.
+            </li>
+            <li>
+              Work extensively with embedded systems and Zephyr RTOS, contributing to real-time FW development and debug flows.
+            </li>
+            <li>
+              Collaborate with cross-functional HW / FW / ML teams to troubleshoot, tune and optimize workloads for deep learning models.
+            </li>
+            <li>
+              Perform benchmarking and analysis of AI workloads to provide insights into performance bottlenecks and silicon behavior.
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Education</h2>
+
+        <div class="item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">M.Sc. Electrical Engineering</div>
+              <div class="item-meta">Tel Aviv University · 2024 – Present</div>
+            </div>
+            <div class="timeline-dot" aria-hidden="true"></div>
+          </div>
+          <ul>
+            <li>Graduate studies in deep learning, optimization and advanced machine learning.</li>
+            <li>Focus on research in AI and data-driven signal processing.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="item-header">
+            <div>
+              <div class="item-title">B.Sc. Electrical Engineering &amp; Computer Science</div>
+              <div class="item-meta">Ben-Gurion University of the Negev · 2019 – 2023</div>
+            </div>
+            <div class="timeline-dot" aria-hidden="true"></div>
+          </div>
+          <ul>
+            <li>Specialization in deep learning and neural networks.</li>
+            <li>
+              Final project on deep learning and quantization in digital signal processing; work accepted to a peer-reviewed conference.
+            </li>
+            <li>
+              Relevant coursework: Machine Learning, Digital Signal Processing, Embedded Systems, Advanced Programming in Python.
+            </li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- RIGHT COLUMN -->
+    <aside>
+      <article class="card">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <div>
+            <div class="skill-group-title">Programming</div>
+            <div class="skill-list">Python, C, C++</div>
+          </div>
+          <div>
+            <div class="skill-group-title">Embedded / FW</div>
+            <div class="skill-list">Zephyr RTOS, HW bring-up, silicon validation flows</div>
+          </div>
+          <div>
+            <div class="skill-group-title">ML / Data</div>
+            <div class="skill-list">Deep learning, NumPy, Pandas, Matplotlib</div>
+          </div>
+          <div>
+            <div class="skill-group-title">Domains</div>
+            <div class="skill-list">AI accelerators, performance analysis, HW–SW co-design</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Contact</h2>
+        <p class="section-intro">
+          Open to roles and collaborations in deep learning, applied ML research, and AI-focused embedded / firmware engineering.
+        </p>
+        <div class="lang-list">
+          <span><strong>Email:</strong> <a href="mailto:itamar.assaf@gmail.com">itamar.assaf@gmail.com</a></span>
+          <span><strong>Phone:</strong> +972&nbsp;50&nbsp;846&nbsp;4785</span>
+          <span><strong>Location:</strong> Tel Aviv, Israel</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Languages</h2>
+        <div class="lang-list">
+          <span>Hebrew – Native</span>
+          <span>English – Fluent</span>
+        </div>
+      </article>
+    </aside>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Itamar Assaf
+  </footer>
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
